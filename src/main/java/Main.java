@@ -72,14 +72,15 @@ public class Main {
         sessionFactory.close();
     }
 
-    protected static void setUp() throws Exception {
+    protected static void setUp() {
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure() // por defecto: hibernate.cfg.xml
                 .build();
         try {
-            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-        } catch (Exception e) {
-            StandardServiceRegistryBuilder.destroy(registry);
+            sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
+        }
+        catch (Exception e) {
+            StandardServiceRegistryBuilder.destroy( registry );
         }
     }
 }
